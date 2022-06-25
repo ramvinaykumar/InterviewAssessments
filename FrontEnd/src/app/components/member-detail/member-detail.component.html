@@ -1,0 +1,38 @@
+<form novalidate autocomplete="off" #form="ngForm" (submit)="onSubmit(form)">
+    <input type="hidden" name="id" [value]="apiService.formData.id" />
+    <div class="form-group">
+        <label>First Name</label>
+        <input class="form-control form-control-lg" placeholder="First Name" name="firstName"
+            #firstName="ngModel" [(ngModel)]="apiService.formData.firstName" required maxlength="50" minlength="2"
+            [class.invalid]="firstName.invalid && firstName.touched" />
+    </div>
+    <div class="form-group">
+        <label>Middle Name</label>
+        <input class="form-control form-control-lg" placeholder="Middle Name" name="middleName"
+            #middleName="ngModel" [(ngModel)]="apiService.formData.middleName" required maxlength="30" minlength="2"
+            [class.invalid]="middleName.invalid && middleName.touched" />
+    </div>
+    <div class="form-group">
+        <label>Last Name</label>
+        <input class="form-control form-control-lg" placeholder="Last Name" name="lastName"
+            #lastName="ngModel" [(ngModel)]="apiService.formData.lastName" required maxlength="50" minlength="2"
+            [class.invalid]="lastName.invalid && lastName.touched" />
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label>Age</label>
+            <input class="form-control form-control-lg" placeholder="Age" name="age" #age="ngModel"
+                [(ngModel)]="apiService.formData.age" required maxlength="2" minlength="1"
+                [class.invalid]="age.invalid && age.touched" />
+        </div>
+        <div class="form-group col-md-6">
+            <label>Gender</label>
+            <input type="text" class="form-control form-control-lg" placeholder="Gender"
+                name="gender" #gender="ngModel" [(ngModel)]="apiService.formData.gender"
+                required maxlength="6" minlength="4" [class.invalid]="gender.invalid && gender.touched" />
+        </div>
+    </div>
+    <div class="form-group">
+        <button class="btn btn-info btn-lg btn-block" type="submit" [disabled]="form.invalid">SUBMIT</button>
+    </div>
+</form>
